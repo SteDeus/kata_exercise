@@ -1,4 +1,4 @@
-# Gilded Rose starting position in Java
+# Gilded Rose Kata exercise (Java)
 
 ## File naming system
 
