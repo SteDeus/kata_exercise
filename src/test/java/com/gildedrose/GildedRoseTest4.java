@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class GildedRoseTest3 {
+class GildedRoseTest4 {
 
     @Nested
     @DisplayName("Standard Items")
@@ -14,8 +14,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Quality and sellIn decrease by 1 each day")
         void standardItemDecreasesInQualityAndSellIn() {
-            Item3[] items = new Item3[]{new Item3("Standard Item 1", 10, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            Item4[] items = new Item4[]{new Item4("Standard Item 1", 10, 20)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(9, app.items[0].sellIn);
             assertEquals(19, app.items[0].quality);
@@ -24,8 +24,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Quality decreases double when sellIn date has passed")
         void standardItemQualityDecreasesDoubleAfterSellIn() {
-            Item3[] items = new Item3[]{new Item3("Standard Item 2", 0, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            Item4[] items = new Item4[]{new Item4("Standard Item 2", 0, 20)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(-1, app.items[0].sellIn);
             assertEquals(18, app.items[0].quality);
@@ -34,8 +34,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Quality is never negative")
         void qualityNeverNegative() {
-            Item3[] items = new Item3[]{new Item3("Standard Item 3", 10, 0)};
-            GildedRose3 app = new GildedRose3(items);
+            Item4[] items = new Item4[]{new Item4("Standard Item 3", 10, 0)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(0, app.items[0].quality);
         }
@@ -43,8 +43,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Price is never zero")
         void priceNeverZero() {
-            Item3[] items = new Item3[]{new Item3("Standard Item 1", 10, 20, 1)};
-            GildedRose3 app = new GildedRose3(items);
+            Item4[] items = new Item4[]{new Item4("Standard Item 1", 10, 20, 1)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             // Check lower bound even if standard logic doesn't reduce price
             assert(app.items[0].price > 0);
@@ -59,8 +59,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Initial price is 50 and increases by 5 every 2 days")
         void agedBriePriceIncreasesByFiveEveryTwoDays() {
-            ItemBrie3[] items = new ItemBrie3[]{new ItemBrie3(BRIE, 10, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBrie4[] items = new ItemBrie4[]{new ItemBrie4(BRIE, 10, 20)};
+            GildedRose4 app = new GildedRose4(items);
 
             assertEquals(50, app.items[0].price);
 
@@ -80,8 +80,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Aged Brie increases in quality the older it gets")
         void agedBrieIncreasesInQuality() {
-            ItemBrie3[] items = new ItemBrie3[]{new ItemBrie3(BRIE, 10, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBrie4[] items = new ItemBrie4[]{new ItemBrie4(BRIE, 10, 20)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(21, app.items[0].quality);
         }
@@ -89,8 +89,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Quality never exceeds 50")
         void qualityNeverMoreThanFifty() {
-            ItemBrie3[] items = new ItemBrie3[]{new ItemBrie3(BRIE, 10, 50)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBrie4[] items = new ItemBrie4[]{new ItemBrie4(BRIE, 10, 50)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(50, app.items[0].quality);
         }
@@ -98,8 +98,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Aged Brie increases by 2 in quality after sellIn date")
         void agedBrieQualityIncreasesDoubleAfterSellIn() {
-            ItemBrie3[] items = new ItemBrie3[]{new ItemBrie3(BRIE, 0, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBrie4[] items = new ItemBrie4[]{new ItemBrie4(BRIE, 0, 20)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(22, app.items[0].quality);
         }
@@ -107,8 +107,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Aged Brie quality never exceeds 50 even after sellIn date")
         void agedBrieQualityNeverMoreThanFiftyEvenAfterSellIn() {
-            ItemBrie3[] items = new ItemBrie3[]{new ItemBrie3(BRIE, 0, 49)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBrie4[] items = new ItemBrie4[]{new ItemBrie4(BRIE, 0, 49)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(50, app.items[0].quality);
         }
@@ -122,8 +122,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Sulfuras quality is 50 and never changes")
         void sulfurasQualityNeverChanges() {
-            ItemSulfuras3[] items = new ItemSulfuras3[]{new ItemSulfuras3(SULFURAS, 10, 80)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemSulfuras4[] items = new ItemSulfuras4[]{new ItemSulfuras4(SULFURAS, 10, 80)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(80, app.items[0].quality);
         }
@@ -131,8 +131,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Sulfuras sellIn never changes")
         void sulfurasSellInNeverChanges() {
-            ItemSulfuras3[] items = new ItemSulfuras3[]{new ItemSulfuras3(SULFURAS, 10, 80)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemSulfuras4[] items = new ItemSulfuras4[]{new ItemSulfuras4(SULFURAS, 10, 80)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(10, app.items[0].sellIn);
         }
@@ -140,8 +140,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Sulfuras quality and sellIn never change even after sellIn date")
         void sulfurasNeverChangesEvenAfterSellIn() {
-            ItemSulfuras3[] items = new ItemSulfuras3[]{new ItemSulfuras3(SULFURAS, -1, 80)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemSulfuras4[] items = new ItemSulfuras4[]{new ItemSulfuras4(SULFURAS, -1, 80)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(-1, app.items[0].sellIn);
             assertEquals(80, app.items[0].quality);
@@ -156,8 +156,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Quality increases by 1 when there are more than 10 days left")
         void increasesByOneMoreThanTenDays() {
-            ItemBackstage3[] items = new ItemBackstage3[]{new ItemBackstage3(BACKSTAGE_PASSES, 11, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBackstage4[] items = new ItemBackstage4[]{new ItemBackstage4(BACKSTAGE_PASSES, 11, 20)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(21, app.items[0].quality);
         }
@@ -165,8 +165,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Quality increases by 2 when there are 10 days left")
         void increasesByTwoWithTenDaysLeft() {
-            ItemBackstage3[] items = new ItemBackstage3[]{new ItemBackstage3(BACKSTAGE_PASSES, 10, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBackstage4[] items = new ItemBackstage4[]{new ItemBackstage4(BACKSTAGE_PASSES, 10, 20)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(22, app.items[0].quality);
         }
@@ -174,8 +174,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Quality increases by 2 when there are 6 days left")
         void increasesByTwoWithSixDaysLeft() {
-            ItemBackstage3[] items = new ItemBackstage3[]{new ItemBackstage3(BACKSTAGE_PASSES, 6, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBackstage4[] items = new ItemBackstage4[]{new ItemBackstage4(BACKSTAGE_PASSES, 6, 20)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(22, app.items[0].quality);
         }
@@ -183,8 +183,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Quality increases by 3 when there are 5 days left")
         void increasesByThreeWithFiveDaysLeft() {
-            ItemBackstage3[] items = new ItemBackstage3[]{new ItemBackstage3(BACKSTAGE_PASSES, 5, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBackstage4[] items = new ItemBackstage4[]{new ItemBackstage4(BACKSTAGE_PASSES, 5, 20)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(23, app.items[0].quality);
         }
@@ -192,8 +192,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Quality increases by 3 when there are 1 day left")
         void increasesByThreeWithOneDayLeft() {
-            ItemBackstage3[] items = new ItemBackstage3[]{new ItemBackstage3(BACKSTAGE_PASSES, 1, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBackstage4[] items = new ItemBackstage4[]{new ItemBackstage4(BACKSTAGE_PASSES, 1, 20)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(23, app.items[0].quality);
         }
@@ -201,8 +201,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Quality drops to 0 after the concert")
         void qualityDropsToZeroAfterConcert() {
-            ItemBackstage3[] items = new ItemBackstage3[]{new ItemBackstage3(BACKSTAGE_PASSES, 0, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBackstage4[] items = new ItemBackstage4[]{new ItemBackstage4(BACKSTAGE_PASSES, 0, 20)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(0, app.items[0].quality);
         }
@@ -210,8 +210,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Quality never exceeds 50 (10 days)")
         void qualityNeverMoreThanFiftyNearConcert() {
-            ItemBackstage3[] items = new ItemBackstage3[]{new ItemBackstage3(BACKSTAGE_PASSES, 10, 49)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBackstage4[] items = new ItemBackstage4[]{new ItemBackstage4(BACKSTAGE_PASSES, 10, 49)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(50, app.items[0].quality);
         }
@@ -219,8 +219,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Initial price is 100 and increases by 20 daily, drops to 2 after concert")
         void backstagePassesPriceLogic() {
-            ItemBackstage3[] items = new ItemBackstage3[]{new ItemBackstage3(BACKSTAGE_PASSES, 1, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemBackstage4[] items = new ItemBackstage4[]{new ItemBackstage4(BACKSTAGE_PASSES, 1, 20)};
+            GildedRose4 app = new GildedRose4(items);
 
             assertEquals(100, app.items[0].price);
 
@@ -240,8 +240,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Conjured items degrade in quality twice as fast as normal items")
         void conjuredItemsDegradeTwiceAsFast() {
-            ItemConjured3[] items = new ItemConjured3[]{new ItemConjured3(CONJURED, 10, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemConjured4[] items = new ItemConjured4[]{new ItemConjured4(CONJURED, 10, 20)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(18, app.items[0].quality);
             assertEquals(9,  app.items[0].sellIn);
@@ -250,8 +250,8 @@ class GildedRoseTest3 {
         @Test
         @DisplayName("Conjured items degrade in quality twice as fast as normal items after sellIn date")
         void conjuredItemsDegradeTwiceAsFastAfterSellIn() {
-            ItemConjured3[] items = new ItemConjured3[]{new ItemConjured3(CONJURED, 0, 20)};
-            GildedRose3 app = new GildedRose3(items);
+            ItemConjured4[] items = new ItemConjured4[]{new ItemConjured4(CONJURED, 0, 20)};
+            GildedRose4 app = new GildedRose4(items);
             app.updateQuality();
             assertEquals(16, app.items[0].quality);
             assertEquals(-1, app.items[0].sellIn);
@@ -263,8 +263,8 @@ class GildedRoseTest3 {
             @Test
             @DisplayName("No item can have a price higher than Sulfuras (100,000)")
             void priceNeverHigherThanSulfuras() {
-                ItemConjured3[] items = new ItemConjured3[]{new ItemConjured3("Expensive Cake", 10, 20, 99950)};
-                GildedRose3 app = new GildedRose3(items);
+                ItemConjured4[] items = new ItemConjured4[]{new ItemConjured4("Expensive Cake", 10, 20, 99950)};
+                GildedRose4 app = new GildedRose4(items);
 
                 app.updateQuality();
                 assertEquals(100000, app.items[0].price);
