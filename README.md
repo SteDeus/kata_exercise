@@ -10,4 +10,4 @@
 
 ***3.java => first enhancement implementation
 
-***4.java => second enhancement implementation (WIP)
+***4.java => second enhancement implementation
