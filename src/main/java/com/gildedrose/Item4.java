@@ -10,11 +10,14 @@ public class Item4 {
 
     public int price;
 
+    public double discountedPrice;
+
     public Item4(String name, int sellIn, int quality, int price) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
         this.price = price;
+        this.discountedPrice = price;
     }
 
     public Item4(String name, int sellIn, int quality) {
@@ -42,6 +45,10 @@ public class Item4 {
         return 0;
     }
 
+    public double getDiscountedPrice() {
+        return this.discountedPrice + this.getPriceDifference() - (this.price > 20 && this.discountedPrice > 20 ? 5 : 0);
+    }
+
     public void updateAll() {
 
         this.quality += this.getQualityDifference();
@@ -59,6 +66,8 @@ public class Item4 {
         if (this.price > 100000) {
             this.price = 100000;
         }
+
+        this.discountedPrice = this.getDiscountedPrice();
 
         this.sellIn += getSellInDifference();
         if (this.sellIn < 0) {

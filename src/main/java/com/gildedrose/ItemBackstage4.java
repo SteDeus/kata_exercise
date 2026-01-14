@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class ItemBackstage4 extends Item4 {
+public class ItemBackstage4 extends Item4 implements PercentageDiscount4 {
     public ItemBackstage4(String name, int sellIn, int quality, int price) {
         super(name, sellIn, quality, price);
     }
@@ -28,6 +28,11 @@ public class ItemBackstage4 extends Item4 {
             return 2 - this.price;
         }
         return 20;
+    }
+
+    @Override
+    public double getDiscountedPrice() {
+        return getPercentageDiscount(this.price);
     }
 
 }

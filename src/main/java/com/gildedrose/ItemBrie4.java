@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class ItemBrie4 extends Item4 {
+public class ItemBrie4 extends Item4 implements PercentageDiscount4 {
 
     public Boolean increasePrice = true;
 
@@ -24,6 +24,11 @@ public class ItemBrie4 extends Item4 {
     @Override
     public int getQualityDifference() {
         return super.getQualityDifference() * -1;
+    }
+
+    @Override
+    public double getDiscountedPrice() {
+        return getPercentageDiscount(this.price);
     }
 
 }

@@ -49,6 +49,25 @@ class GildedRoseTest4 {
             // Check lower bound even if standard logic doesn't reduce price
             assert(app.items[0].price > 0);
         }
+
+        @Test
+        @DisplayName("Discount of 5 applied when price is more than 20")
+        void standardItemDiscount() {
+            Item4 item = new Item4("Standard Item 4", 10, 20, 25);
+            GildedRose4 app = new GildedRose4(new Item4[]{item});
+            app.updateQuality();
+            assertEquals(20, item.discountedPrice);
+        }
+
+        @Test
+        @DisplayName("No discount applied when price is 20 or less")
+        void standardItemNoDiscountWhenPriceTwentyOrLess() {
+            Item4 item = new Item4("Standard Item 5", 10, 20, 20);
+            GildedRose4 app = new GildedRose4(new Item4[]{item});
+            app.updateQuality();
+            assertEquals(20, item.discountedPrice);
+        }
+
     }
 
     @Nested
@@ -112,6 +131,24 @@ class GildedRoseTest4 {
             app.updateQuality();
             assertEquals(50, app.items[0].quality);
         }
+
+        @Test
+        @DisplayName("30% discount applied when price is over 10")
+        void agedBrieDiscount() {
+            ItemBrie4 item = new ItemBrie4(BRIE, 10, 20, 20);
+            GildedRose4 app = new GildedRose4(new ItemBrie4[]{item});
+            app.updateQuality();
+            assertEquals(14, item.discountedPrice);
+        }
+
+        @Test
+        @DisplayName("30% discount not applied if price is less or equal to 10")
+        void agedBrieDiscountWhenPriceSurpassesTen() {
+            ItemBrie4 item = new ItemBrie4(BRIE, 10, 20, 10);
+            GildedRose4 app = new GildedRose4(new ItemBrie4[]{item});
+            app.updateQuality();
+            assertEquals(10, item.discountedPrice);
+        }
     }
 
     @Nested
@@ -145,6 +182,17 @@ class GildedRoseTest4 {
             app.updateQuality();
             assertEquals(-1, app.items[0].sellIn);
             assertEquals(80, app.items[0].quality);
+        }
+
+        @Test
+        @DisplayName("Sulfuras is never discounted")
+        void sulfurasNoDiscount() {
+            ItemSulfuras4 item = new ItemSulfuras4(SULFURAS, 10, 80);
+            item.price = 100;
+            item.discountedPrice = 100;
+            GildedRose4 app = new GildedRose4(new ItemSulfuras4[]{item});
+            app.updateQuality();
+            assertEquals(100, item.discountedPrice);
         }
     }
 
@@ -230,6 +278,16 @@ class GildedRoseTest4 {
             app.updateQuality(); // sellIn becomes -1 (concert passed)
             assertEquals(2, app.items[0].price);
         }
+
+        @Test
+        @DisplayName("30% discount applied when price is over 10")
+        void backstageDiscount() {
+            ItemBackstage4 item = new ItemBackstage4(BACKSTAGE_PASSES, 12, 20, 80);
+            GildedRose4 app = new GildedRose4(new ItemBackstage4[]{item});
+            app.updateQuality();
+            assertEquals(70, item.discountedPrice);
+        }
+
     }
 
     @Nested
@@ -255,6 +313,15 @@ class GildedRoseTest4 {
             app.updateQuality();
             assertEquals(16, app.items[0].quality);
             assertEquals(-1, app.items[0].sellIn);
+        }
+
+        @Test
+        @DisplayName("Discount of 5 applied when price is over 20")
+        void conjuredDiscount() {
+            ItemConjured4 item = new ItemConjured4(CONJURED, 10, 20, 30);
+            GildedRose4 app = new GildedRose4(new ItemConjured4[]{item});
+            app.updateQuality();
+            assertEquals(125, item.discountedPrice);
         }
 
         @Nested
