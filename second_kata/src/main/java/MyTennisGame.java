@@ -11,9 +11,9 @@ public class MyTennisGame implements TennisGame {
 
     public void wonPoint(String playerName) {
         if (player1.getName().equals(playerName)) {
-            this.player1.wonPoint(playerName);
+            this.player1.wonPoint();
         } else {
-            this.player2.wonPoint(playerName);
+            this.player2.wonPoint();
         }
     }
     
