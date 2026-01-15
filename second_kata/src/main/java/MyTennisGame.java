@@ -1,6 +1,12 @@
 
 public class MyTennisGame implements TennisGame {
 
+    private static final String DEUCE = "Deuce";
+    private static final String ADVANTAGE = "Advantage ";
+    private static final String WIN_FOR = "Win for ";
+    private static final String ALL = "All";
+    private static final String SCORE_SEPARATOR = "-";
+
     private final MyTennisPlayer player1;
     private final MyTennisPlayer player2;
 
@@ -21,15 +27,15 @@ public class MyTennisGame implements TennisGame {
         final int player1Score = player1.getScore();
         final int player2Score = player2.getScore();
         final int scoreDifference = Math.abs(player1Score - player2Score);
-        
+
         if ((player1Score < 4 && player2Score < 4) && player1Score + player2Score < 6) {
-            return MyTennisPlayerScores.getDescription(player1Score) + "-" + (scoreDifference == 0 ? "All" : MyTennisPlayerScores.getDescription(player2Score));
+            return MyTennisPlayerScores.getDescription(player1Score) + SCORE_SEPARATOR + (scoreDifference == 0 ? ALL : MyTennisPlayerScores.getDescription(player2Score));
         } else {
             final String winningPlayerName = getWinningPlayerName(player1Score, player2Score);
             return getGameStateScore(scoreDifference) + winningPlayerName;
         }
     }
-    
+
     private String getWinningPlayerName(int player1Score, int player2Score) {
         String winningPlayerName = "";
         if (player1Score > player2Score) {
@@ -44,9 +50,9 @@ public class MyTennisGame implements TennisGame {
 
     private String getGameStateScore(int scoreDifference) {
         switch (scoreDifference) {
-            case 0: return "Deuce";
-            case 1: return "Advantage ";
-            default: return "Win for ";
+            case 0: return DEUCE;
+            case 1: return ADVANTAGE;
+            default: return WIN_FOR;
         }
     }
 }
