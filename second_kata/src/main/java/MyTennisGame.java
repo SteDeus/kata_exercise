@@ -26,7 +26,7 @@ public class MyTennisGame implements TennisGame {
             return MyTennisPlayerScores.getDescription(player1Score) + "-" + (scoreDifference == 0 ? "All" : MyTennisPlayerScores.getDescription(player2Score));
         } else {
             final String winningPlayerName = getWinningPlayerName(player1Score, player2Score);
-            return MyTennisGameStateScores.SCORE_DIFFERENCE_MAP.getOrDefault(scoreDifference, "Win for ") + winningPlayerName;
+            return getGameStateScore(scoreDifference) + winningPlayerName;
         }
     }
     
@@ -40,5 +40,13 @@ public class MyTennisGame implements TennisGame {
         }
         
         return winningPlayerName;
+    }
+
+    private String getGameStateScore(int scoreDifference) {
+        switch (scoreDifference) {
+            case 0: return "Deuce";
+            case 1: return "Advantage ";
+            default: return "Win for ";
+        }
     }
 }
