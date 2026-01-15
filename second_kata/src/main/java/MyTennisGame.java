@@ -23,7 +23,7 @@ public class MyTennisGame implements TennisGame {
         final int scoreDifference = Math.abs(player1Score - player2Score);
         
         if ((player1Score < 4 && player2Score < 4) && player1Score + player2Score < 6) {
-            return MyTennisPlayerScores.SCORE_MAP.get(player1Score) + "-" + (scoreDifference == 0 ? "All" : MyTennisPlayerScores.SCORE_MAP.get(player2Score));
+            return MyTennisPlayerScores.getDescription(player1Score) + "-" + (scoreDifference == 0 ? "All" : MyTennisPlayerScores.getDescription(player2Score));
         } else {
             final String winningPlayerName = getWinningPlayerName(player1Score, player2Score);
             return MyTennisGameStateScores.SCORE_DIFFERENCE_MAP.getOrDefault(scoreDifference, "Win for ") + winningPlayerName;

@@ -1,16 +1,21 @@
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+public enum MyTennisPlayerScores {
+    LOVE(0, "Love"),
+    FIFTEEN(1, "Fifteen"),
+    THIRTY(2, "Thirty"),
+    FORTY(3, "Forty");
 
-public class MyTennisPlayerScores {
-    public static final Map<Integer, String> SCORE_MAP;
+    private final int value;
+    private final String description;
 
-    static {
-        Map<Integer, String> tempMap = new HashMap<>();
-        tempMap.put(0, "Love");
-        tempMap.put(1, "Fifteen");
-        tempMap.put(2, "Thirty");
-        tempMap.put(3, "Forty");
-        SCORE_MAP = Collections.unmodifiableMap(tempMap);
+    MyTennisPlayerScores(int value, String description) {
+        this.value = value;
+        this.description = description;
+    }
+
+    public static String getDescription(int points) {
+        for (MyTennisPlayerScores s : values()) {
+            if (s.value == points) return s.description;
+        }
+        return "Forty";
     }
 }
