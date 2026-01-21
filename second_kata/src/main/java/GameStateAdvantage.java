@@ -14,16 +14,12 @@ class GameStateAdvantage implements GameState {
     public void player1Scores() {
         if (leadingPlayer.equals(namePlayer1)) {
             game.setGameState(new GameStateWin(namePlayer1));
-        } else {
-            game.setGameState(new GameStateDeuce(game, namePlayer1, namePlayer2));
         }
     }
 
     public void player2Scores() {
         if (leadingPlayer.equals(namePlayer2)) {
             game.setGameState(new GameStateWin(namePlayer2));
-        } else {
-            game.setGameState(new GameStateDeuce(game, namePlayer1, namePlayer2));
         }
     }
 
