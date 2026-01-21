@@ -5,7 +5,8 @@ class GameStateWin implements GameState {
         this.winner = winner;
     }
 
-    public void player1Scores() {} // Game over
+    // Game over
+    public void player1Scores() {}
     public void player2Scores() {}
 
     public String asString() {
