@@ -14,10 +14,10 @@ public class MyTennisGame2 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (playerName.equals(namePlayer1)) {
+        if (playerName.equals(this.namePlayer1)) {
             gameState.player1Scores();
         }
-        if (playerName.equals(namePlayer2)) {
+        if (playerName.equals(this.namePlayer2)) {
             gameState.player2Scores();
         }
     }
