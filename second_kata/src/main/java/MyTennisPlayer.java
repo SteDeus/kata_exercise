@@ -17,7 +17,7 @@ public class MyTennisPlayer {
         return this.score;
     }
 
-    void wonPoint(        ) {
+    void wonPoint() {
         this.score++;
     }
 }
