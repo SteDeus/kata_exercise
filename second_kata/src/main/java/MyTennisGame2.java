@@ -6,7 +6,7 @@ public class MyTennisGame2 implements TennisGame {
     public MyTennisGame2(String namePlayer1, String namePlayer2) {
         this.namePlayer1 = namePlayer1;
         this.namePlayer2 = namePlayer2;
-        this.gameState = new PointsState(this, this.namePlayer1, this.namePlayer2, 0, 0);
+        this.gameState = new GameStatePoints(this, this.namePlayer1, this.namePlayer2, 0, 0);
     }
 
     void setGameState(GameState gameState) {

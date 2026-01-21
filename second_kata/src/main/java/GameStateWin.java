@@ -1,7 +1,7 @@
-class WinState implements GameState {
+class GameStateWin implements GameState {
     private final String winner;
 
-    WinState(String winner) {
+    GameStateWin(String winner) {
         this.winner = winner;
     }
 

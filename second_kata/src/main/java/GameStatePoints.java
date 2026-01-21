@@ -1,11 +1,11 @@
-class PointsState implements GameState {
+class GameStatePoints implements GameState {
     private int scorePlayer1, scorePlayer2;
     private final String[] desc = {"Love", "Fifteen", "Thirty", "Forty"};
     private final MyTennisGame2 game;
     private final String namePlayer1;
     private final String namePlayer2;
 
-    PointsState(MyTennisGame2 game, String namePlayer1, String namePlayer2, int scorePlayer1, int scorePlayer2) {
+    GameStatePoints(MyTennisGame2 game, String namePlayer1, String namePlayer2, int scorePlayer1, int scorePlayer2) {
         this.game = game;
         this.namePlayer1 = namePlayer1;
         this.namePlayer2 = namePlayer2;
@@ -25,11 +25,12 @@ class PointsState implements GameState {
 
     private void update() {
         if (scorePlayer1 == 3 && scorePlayer2 == 3) {
-            game.setGameState(new DeuceState(game, namePlayer1, namePlayer2));
-        } else if (scorePlayer1 > 3) {
-            game.setGameState(new WinState(namePlayer1));
+            game.setGameState(new GameStateDeuce(game, namePlayer1, namePlayer2));
+        }
+        if (scorePlayer1 > 3) {
+            game.setGameState(new GameStateWin(namePlayer1));
         } else if (scorePlayer2 > 3) {
-            game.setGameState(new WinState(namePlayer2));
+            game.setGameState(new GameStateWin(namePlayer2));
         }
     }
 
